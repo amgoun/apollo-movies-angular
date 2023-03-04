@@ -1,0 +1,303 @@
+
+
+<!-- ///////// -->
+
+<!-- navigation section -->
+<nav class="bg-white py-2 border-b-[1px] [#cccc]">
+  <div class="mx-auto">
+    <div class="flex justify-between px-8">
+      <div class="flex space-x-4">
+        <!-- logo -->
+        <div
+          [routerLink]="['/home']"
+          class="flex text-center"
+          style="height: 5rem; width: 5rem"
+        >
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px"
+            y="0px"
+            viewBox="0 0 590.28 603.64"
+            style="enable-background: new 0 0 590.28 603.64"
+            xml:space="preserve"
+          >
+            <style type="text/css">
+              .st0 {
+                fill: #6366f1;
+              }
+            </style>
+            <path
+              class="st0"
+              d="M518.28,178.14v180.89l-103.17-50.14c2.63-11.99,4.04-24.51,4.04-37.31s-1.41-25.32-4.04-37.31L518.28,178.14z"
+            />
+            <g>
+              <path
+                class="st0"
+                d="M236.01,114.67c-86.67,0-156.91,70.24-156.91,156.91c0,86.67,70.24,156.91,156.91,156.91
+          s156.91-70.24,156.91-156.91C392.92,184.91,322.68,114.67,236.01,114.67z M236.01,393.48c-67.34,0-121.89-54.61-121.89-121.89
+          c0-67.34,54.55-121.89,121.89-121.89S357.9,204.24,357.9,271.58C357.9,338.86,303.36,393.48,236.01,393.48z"
+              />
+              <g>
+                <circle class="st0" cx="182.97" cy="271.58" r="17.68" />
+                <circle class="st0" cx="236.01" cy="271.58" r="17.68" />
+                <circle class="st0" cx="289.05" cy="271.58" r="17.68" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <!-- primary navbar -->
+     <!--  <div class="flex items-center space-x-3 hidden lg:flex">
+        <div flex flex-row gap-4>
+          <select
+            name="company-size"
+            id="company-size"
+            class="border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500"
+          >
+            <option value="">Please select a genre</option>
+            <option value="ACTION">Action</option>
+            <option value="DRAMA">Drama</option>
+            <option value="COMEDY">Comedy</option>
+            <option value="HORROR">Horror</option>
+            <option value="MYSTERY">Mystery</option>
+            <option value="ROMANCE">Romance</option>
+            <option value="OTHER">Other</option>
+          </select>
+        </div>
+
+        <form class="flex items-center">
+          <label for="simple-search" class="sr-only">Search</label>
+          <div class="relative w-full">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                aria-hidden="true"
+                class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="simple-search"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 first-letter: focus:border-indigo-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+              placeholder="Search for a movie"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-500 rounded-lg border border-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-700 dark:hover:indigo-500 dark:focus:ring-indigo-700"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+            <span class="sr-only">Search</span>
+          </button>
+        </form>
+      </div> -->
+
+      <!-- secondary navbar -->
+      <div class="flex items-center space-x-1 hidden lg:flex">
+    
+        <a
+        [routerLink]="['/home']"
+        class=" self-center py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors" 
+      >
+        Home
+      </a>
+      <a
+      *ngIf="isLoggedIn"
+      [routerLink]="['/profile']"
+      class="block py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+    >
+      Profile
+    </a>
+        <a
+          *ngIf="isLoggedIn"
+          role="menuitem"
+          class="py-2 px-6 bg-indigo-500 text-white  hover:opacity-75 transition-opacity focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-md ring-offset-4 ring-offset-rose-50"
+          (click)="logout()"
+        >
+          logout
+        </a>
+        <a
+          *ngIf="!isLoggedIn"
+          [routerLink]="['/login']"
+          role="menuitem"
+          class="py-1 px-6 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+          (click)="login()"
+        >
+          Login
+        </a>
+        <a
+          *ngIf="!isLoggedIn"
+          [routerLink]="['/signup']"
+          role="menuitem"
+          class="py-2 px-6 bg-indigo-500 text-white shadow-xl hover:opacity-75 transition-opacity focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-md ring-offset-4 ring-offset-rose-50"
+        >
+          Sign Up
+        </a>
+      </div>
+      <!--       mobile menu button -->
+      <div class="lg:hidden flex items-center">
+        <button (click)="togleMenu()" class="menu-hidden-button">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- mobile menu -->
+  <div *ngIf="expand" class="lg:hidden menu-hidden px-4">
+<!--     <div class="py-2">
+      <select
+        name="company-size"
+        id="company-size"
+        class="border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 relative w-[100%]"
+      >
+        <option value="">Please select a genre</option>
+        <option value="ACTION">Action</option>
+        <option value="DRAMA">Drama</option>
+        <option value="COMEDY">Comedy</option>
+        <option value="HORROR">Horror</option>
+        <option value="MYSTERY">Mystery</option>
+        <option value="ROMANCE">Romance</option>
+        <option value="OTHER">Other</option>
+      </select>
+    </div>
+    <div class="py-2">
+      <form class="flex items-center">
+        <label for="simple-search" class="sr-only">Search</label>
+        <div class="relative w-full">
+          <div
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="simple-search"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-indigo-500 first-letter: focus:border-indigo-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500"
+            placeholder="Search for a movie"
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="p-2.5 ml-2 text-sm font-medium text-white bg-indigo-500 rounded-lg border border-indigo-500 hover:bg-indigo-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 dark:bg-indigo-700 dark:hover:indigo-500 dark:focus:ring-indigo-700"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+          <span class="sr-only">Search</span>
+        </button>
+      </form>
+    </div> -->
+
+    <div class="flex flex-col gap-1">
+      <a
+        *ngIf="isLoggedIn"
+        [routerLink]="['/profile']"
+        class="block py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+      >
+        Profile
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        class="block py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+        (click)="logout()"
+      >
+        logout
+      </a>
+       
+ 
+        <a
+      
+        *ngIf="!isLoggedIn"
+        [routerLink]="['/login']"
+        class="block py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+        (click)="login()"
+      >
+        Login
+      </a>
+   
+   
+
+      <a
+        *ngIf="!isLoggedIn"
+        [routerLink]="['/login']"
+        class="block py-3 px-3 dark:text-neutral-900 focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-sm ring-offset-4 ring-offset-rose-50 hover:text-neutral-600 transition-colors"
+        (click)="login()"
+      >
+        Login
+      </a>
+      <a
+        *ngIf="!isLoggedIn"
+        [routerLink]="['/signup']"
+        class="py-3 text-center bg-indigo-500 text-white shadow-xl hover:opacity-75 transition-opacity focus:outline-none focus-visible:ring-4 ring-neutral-900 rounded-md ring-offset-4 ring-offset-rose-50"
+      >
+        Sign Up
+      </a>
+    </div>
+  </div>
+
+  <!-- mobile nav -->
+</nav>

@@ -1,0 +1,8 @@
+button:disabled {
+    pointer-events: none;
+    opacity:0.2
+  }
+
+   .ng-touched .ng-invalid{
+    border-color: red;
+  }

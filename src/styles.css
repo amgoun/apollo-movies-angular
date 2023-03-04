@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap ');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base  {
+    html , body {
+        font-family: 'Inter', sans-serif;
+        background-color:#f8fafc !important;
+    }
+}
+
+/* ngx-pagination style */
+
+.ngx-pagination li {
+    border-radius: 50% !important;  
+}
+.ngx-pagination  .current   {
+    background: rgb(99 102 241)!important;
+    border-radius: 50%;
+}
+.ngx-pagination a:hover {
+    border-radius: 50%;
+    background-color: #e5e7eb;
+}
+.pagination-next a   {
+    border-radius: 2px !important;
+  
+    
+}
+.pagination-previous a   {
+    border-radius: 2px !important;
+
+    
+}
+
+.plch::placeholder {
+    --tw-placeholder-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-placeholder-opacity));
+}
+

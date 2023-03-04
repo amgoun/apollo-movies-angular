@@ -1,0 +1,69 @@
+<div
+  class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12"
+>
+  <form (ngSubmit)="onSubmit()">
+    <div class="relative py-3 sm:w-96 mx-auto text-center">
+      <span class="text-2xl font-light">Login</span>
+      <div class="mt-4 bg-white shadow-md rounded-lg text-left">
+        <div class="h-2 bg-indigo-500 rounded-t-md"></div>
+        <div class="px-8 py-6">
+          <label class="block font-semibold"> Email </label>
+          <input
+            [(ngModel)]="email"
+            type="text"
+            name="email"
+            required
+            #user_email="ngModel"
+            minlength="2"
+            maxlength="30"
+            placeholder="Email"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+          <div
+            *ngIf="user_email.invalid && user_email.touched"
+            class="py-1 text-xs italic text-red-500"
+            >
+            <span *ngIf="user_email.errors?.required"> email required</span>
+            <span *ngIf="user_email.errors?.minlength">
+              email must be more than 2 characters
+            </span>
+          </div>
+          <label class="block mt-3 font-semibold">Password </label>
+          <input
+            [(ngModel)]="password"
+            type="password"
+            name="password"
+            required
+            #user_password="ngModel"
+            minlength="6"
+            maxlength="30"
+            placeholder="Password"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+          <div
+            *ngIf="user_password.invalid && user_password.touched"
+            class="py-1 text-xs italic text-red-500"
+          >
+            <span *ngIf="user_password.errors?.required">
+              username required</span
+            >
+            <span *ngIf="user_password.errors?.minlength">
+              username must be more than 2 characters
+            </span>
+          </div>
+          <div class="flex justify-between items-baseline">
+            <button
+              type="submit"
+              class="mt-4 bg-indigo-500 text-white py-2 px-6 rounded-md hover:bg-indigo-400"
+            >
+              Login
+            </button>
+            <a [routerLink]="['/signup']" class="text-sm hover:underline"
+              >create an account</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,372 @@
+<div *ngIf="!logged" class="p-10 text-xl">
+  <p>pleas login to view your account</p>
+</div>
+
+<div *ngIf="logged">
+  <!-- start profile-->
+  <div class="flex justify-center p-16 flex-col sm:flex-row bg-gray-200">
+    <!---->
+    <div
+      class="bg-pink shadow-md rounded-lg max-w-sm w-full min:w-sm lg:w-[100%] p-8 bg-white z-40"
+    >
+      <p
+        class="flex font-bold text-xl uppercase p-5 justify-center items-center"
+      >
+        profile
+      </p>
+      <div class="p-4">
+        <div class="flex justify-between items-center p-2">
+          <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+            name
+          </p>
+          <p class="tracking-wide text-md text-gray-700">{{ user?.name }}</p>
+        </div>
+        <div class="flex justify-between items-center p-2">
+          <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+            username
+          </p>
+          <p class="tracking-wide text-md text-gray-700">
+            {{ user?.username }}
+          </p>
+        </div>
+        <div class="flex justify-between items-center p-2">
+          <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+            email
+          </p>
+          <p class="tracking-wide text-md text-gray-700">{{ user?.email }}</p>
+        </div>
+        <div class="flex justify-between items-center p-2">
+          <p
+            class="uppercase tracking-wide text-sm font-bold text-gray-700 mr-4"
+          >
+            joined date
+          </p>
+          <p class="tracking-wide text-md text-gray-700">
+            {{ user?.createdAt | date : "dd/MM/yyyy" }}
+          </p>
+        </div>
+        <div class="flex justify-between items-center p-2">
+          <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+            Role
+          </p>
+          <p class="tracking-wide text-md text-gray-700">{{ user?.role }}</p>
+        </div>
+      </div>
+
+      <div>
+        <div
+          (click)="togleMenu()"
+          class="flex items-center justify-center gap-1 p-2 rounded-lg bg-green-400 hover:bg-green-500 text-white hover:cursor-pointer menu-hidden-button"
+        >
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
+              />
+            </svg>
+          </div>
+          <div>
+            <div>
+              <span> edit your profile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User Update Form -->
+    <div class="justify-center items-center p-5">
+      <!---->
+      <div *ngIf="expand" class="bg-white p-8 shadow-lg">
+        <form
+          (ngSubmit)="updateProfile(updateProfileForm)"
+          #updateProfileForm="ngForm"
+        >
+          <label class="block mt-3 font-semibold"> Username </label>
+          <input
+            [(ngModel)]="profileToupdate.username"
+            type="text"
+            name="username"
+            required
+            #user_username="ngModel"
+            minlength="2"
+            maxlength="15"
+            placeholder="Username"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+          <div
+            *ngIf="user_username.invalid && user_username.touched"
+            class="py-1 text-xs italic text-red-500"
+          >
+            <span *ngIf="user_username.errors?.required">
+              username required</span
+            >
+            <span *ngIf="user_username.errors?.minlength">
+              username must be more than 2 characters
+            </span>
+          </div>
+
+          <label class="block mt-3 font-semibold"> Email </label>
+          <input
+            [(ngModel)]="profileToupdate.email"
+            type="text"
+            name="email"
+            required
+            #user_email="ngModel"
+            minlength="2"
+            maxlength="30"
+            placeholder="email"
+            class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+          />
+          <div
+            *ngIf="user_email.invalid && user_email.touched"
+            class="py-1 text-xs italic text-red-500"
+          >
+            <span *ngIf="user_email.errors?.required"> username required</span>
+            <span *ngIf="user_email.errors?.minlength">
+              username must be more than 2 characters
+            </span>
+          </div>
+          <button
+            type="submit"
+            class="mt-4 bg-indigo-500 text-white py-2 px-6 rounded-md hover:bg-indigo-400"
+          >
+            update
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- end profile-->
+
+<!--start comments-->
+<div
+  *ngIf="haveComments"
+  class="flex justify-center p-16 flex-col sm:flex-row bg-gray-100"
+>
+  <!---->
+  <div class="bg-white shadow-md rounded-lg p-10">
+    <p
+      class="font-semi flex font-bold text-xl uppercase p-5 mb-5 justify-center items-center"
+    >
+      comments
+    </p>
+
+    <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="py-3 px-6">content</th>
+            <th scope="col" class="py-3 px-6">movie title</th>
+            <th scope="col" class="py-3 px-6">movie genre</th>
+
+            <th scope="col" class="py-3 px-6">Action</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let comment of myComments">
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th
+              scope="row"
+              class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              {{ comment.content | excerpt : 20 }}
+            </th>
+            <td class="py-4 px-6">
+              {{ comment.movie.title }}
+            </td>
+            <td class="py-4 px-6">
+              {{ comment.movie.genre }}
+            </td>
+            <td class="py-4 px-6">
+              <a
+                [routerLink]="['/single-comment', comment?.id]"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >Edit / delete
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- end comments-->
+
+<!-- start movies -->
+<div
+  *ngIf="isAdmin"
+  class="flex justify-center items-center p-16 flex-col sm:flex-row bg-gray-200"
+>
+  <!---->
+  <div class="bg-white shadow-md rounded-lg p-10">
+    <p
+      class="font-semi flex font-bold text-xl uppercase p-5 mb-5 justify-center items-center"
+    >
+      movies
+    </p>
+    <div class="overflow-x-auto relative sm:rounded-lg">
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="py-3 px-6">Title</th>
+            <th scope="col" class="py-3 px-6">Genre</th>
+            <th scope="col" class="py-3 px-6">created at</th>
+            <th scope="col" class="py-3 px-6">Action</th>
+          </tr>
+        </thead>
+        <tbody
+          *ngFor="
+            let movie of allMovies
+              | paginate
+                : {
+                    itemsPerPage: PER_PAGE,
+                    currentPage: p,
+                    totalItems: totalMovies
+                  }
+          "
+        >
+          <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+            <th
+              scope="row"
+              class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              {{ movie.title | excerpt : 20 }}
+            </th>
+            <td class="py-4 px-6">
+              {{ movie.genre }}
+            </td>
+            <td class="py-4 px-6">
+              {{ movie.createdAt }}
+            </td>
+            <td class="py-4 px-6">
+              <a
+                [routerLink]="['/movie-detail', movie.id]"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >Edit / delete
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-8 py-5 flex justify-center">
+      <pagination-controls
+        class="mx-auto"
+        (pageChange)="p = $event"
+      ></pagination-controls>
+    </div>
+  </div>
+</div>
+<!-- end movies -->
+
+<!-- start create movie -->
+<div
+  *ngIf="isAdmin"
+  class="flex justify-center p-16 flex-col sm:flex-row bg-gray-100"
+>
+  <div>
+    <p
+      class="font-semi flex font-bold text-xl uppercase p-5 mb-5 justify-center items-center"
+    >
+      movies
+    </p>
+    <form
+      class="form"
+      (ngSubmit)="addMovie(addMovieForm)"
+      #addMovieForm="ngForm"
+    >
+      <label for="title" class="block mt-3 font-semibold">movie title</label>
+      <input
+        class="border border-slate-300 w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+        type="title"
+        placeholder="movie title"
+        name="title"
+        required
+        autofocus
+        [(ngModel)]="title"
+        [ngModelOptions]="{ standalone: false }"
+      />
+      <br />
+      <br />
+      <label for="title" class="block mt-3 font-semibold">thumbnail Url</label>
+      <input
+        class="border border-slate-300 w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+        type="thumbnailUrl"
+        name="thumbnailUrl"
+        placeholder=" thumbnailUrl"
+        required
+        autofocus
+        [(ngModel)]="thumbnailUrl"
+        [ngModelOptions]="{ standalone: false }"
+      />
+      <br />
+      <br />
+      <label for="title" class="block mt-3 font-semibold"> description </label>
+      <textarea
+        class="bg-[#f8fafc] rounded border plch border-gray-300 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
+        name="w3review"
+        cols="30"
+        rows="30"
+        [(ngModel)]="description"
+        placeholder=" movie description "
+        [ngModelOptions]="{ standalone: false }"
+      >
+      </textarea>
+      <div class="flex-col mt-4">
+        <div>
+          <label for="title" class="block mt-3 font-semibold">
+            select genre
+          </label>
+          <select
+            type="string"
+            [(ngModel)]="genrelist"
+            [ngModelOptions]="{ standalone: true }"
+            name="genre"
+            class="mt-4"
+          >
+            <option *ngFor="let genre of genres" [ngValue]="genre">
+              {{ genre }}
+            </option>
+          </select>
+        </div>
+        <div>
+          <label for="title" class="block mt-3 font-semibold">
+            relase date
+          </label>
+          <input
+            type="number"
+            name="relaseDate"
+            class="border h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md"
+            placeholder="relase Date"
+            required
+            autofocus
+            [(ngModel)]="relaseDate"
+            [ngModelOptions]="{ standalone: false }"
+          />
+        </div>
+      </div>
+      <br />
+      <button
+        class="bg-indigo-500 text-white py-2 px-6 rounded-md hover:bg-indigo-400"
+        type="submit"
+      >
+        submit
+      </button>
+    </form>
+  </div>
+</div>
+<!-- end create movie-->
