@@ -7,9 +7,9 @@ import { MovieDetailComponent } from './public/movie-detail/movie-detail.compone
 import { PagenotfoundComponent } from './public/pagenotfound/pagenotfound.component';
 import { SignupComponent } from './public/signup/signup.component';
 import { SingleCommentComponent } from './public/single-comment/single-comment.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+//import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
-
+//{provide: LocationStrategy, useClass: HashLocationStrategy}
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +25,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-    providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
+    providers: []
 })
 export class AppRoutingModule { }

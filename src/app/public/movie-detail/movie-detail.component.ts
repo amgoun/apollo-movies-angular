@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Movie } from '../../generated/graphql';
 import { GET_MOVIE, CREATE_COMMENT, UPDATE_MOVIE_MUTATION, DELET_MOVIE, LIKE_MOVIE, GET_MOVIES } from 'src/app/graphql';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgForm } from '@angular/forms';
 import { NgToastService } from 'ng-angular-popup';
@@ -46,7 +46,8 @@ export class MovieDetailComponent implements OnInit {
     private apollo: Apollo,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private toast: NgToastService
+    private toast: NgToastService,
+    private router: Router  
   ) {
     this.authService.isAuthenticated.subscribe((value) => {
       this.isLoggedIn = value;
@@ -173,8 +174,10 @@ export class MovieDetailComponent implements OnInit {
         });
           window.setTimeout(function () {
           location.reload();
-          window.location.href="/profile";
+          //window.location.href="/profile";
+         
         }, 2000); 
+      
       },
       error: () => {
         this.toast.error({
@@ -183,6 +186,8 @@ export class MovieDetailComponent implements OnInit {
         });
       },
     });
+
+    this.router.navigate(['/profile']);
   }
 
   likeMovie() {
