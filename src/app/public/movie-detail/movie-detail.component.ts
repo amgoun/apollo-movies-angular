@@ -173,9 +173,7 @@ export class MovieDetailComponent implements OnInit {
           summary: 'movie deleted succesful',
         });
           window.setTimeout(function () {
-          location.reload();
-          //window.location.href="/profile";
-         
+          location.reload();       
         }, 2000); 
       
       },
